@@ -8,3 +8,12 @@ def ecommerce_website_page(request):
 
 def signup_page(request):
     return render(request, 'products/signup.html')  # Rendering signup.html
+
+def gaming_laptops(request):
+    return render(request, 'products/gaming_laptops.html')
+
+def study_laptops(request):
+    return render(request, 'products/study_laptops.html')
+
+def office_laptops(request):
+    return render(request, 'products/office_laptops.html')

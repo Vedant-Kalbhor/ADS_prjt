@@ -23,5 +23,8 @@ urlpatterns = [
     path('', views.login_page, name='login'),  # Root URL for loginpg.html
     path('ecommerce_website/', views.ecommerce_website_page, name='ecommerce_website'),  # URL for ecommerce_website.html
     path('signup/', views.signup_page, name='signup'),  # URL for signup.html
+    path('gaming-laptops/', views.gaming_laptops, name='gaming_laptops'),
+    path('study-laptops/', views.study_laptops, name='study_laptops'),
+    path('office-laptops/', views.office_laptops, name='office_laptops'),
 ]
 
