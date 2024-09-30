@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+#from . import views
 from products import views
 
 urlpatterns = [
@@ -26,5 +27,12 @@ urlpatterns = [
     path('gaming-laptops/', views.gaming_laptops, name='gaming_laptops'),
     path('study-laptops/', views.study_laptops, name='study_laptops'),
     path('office-laptops/', views.office_laptops, name='office_laptops'),
+    path('search/', views.search_laptops, name='search_laptops'),
+    path('laptop/<int:laptop_id>/', views.laptop_details, name='laptop_details'),
+
+
+
+
+
 ]
 

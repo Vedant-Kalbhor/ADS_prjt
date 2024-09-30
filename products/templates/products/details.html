@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ laptop.name }} Details</title>
 </head>
 <body>
-    
+    <h1>{{ laptop.name }} Details</h1>
+
+    <table border="3" width="100%">
+        <tr>
+            <td width="30%"><img src="{{ laptop.image_url }}" alt="{{ laptop.name }}" width="100%"></td>
+            <td>
+                <b><font size="5">{{ laptop.name }}</font></b><br>
+                <strong>Price:</strong> ${{ laptop.price }}<br>
+                <strong>Rating:</strong> {{ laptop.rating }} stars<br>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

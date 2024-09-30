@@ -789,12 +789,16 @@ flex-wrap: nowrap;
 <li><a href="#" class="under">ABOUT US</a></li>
 </ul>
 </div>
-<div class="search">
+{% comment %} <div class="search">
 
 <a href=""><input type="text" placeholder="search products" id="input">
 <ion-icon class="s" name="search"></ion-icon>
 </a>
-</div>
+</div> {% endcomment %}
+<form action="{% url 'search_laptops' %}" method="GET">
+    <input type="text" name="query" placeholder="Search for laptops by name...">
+    <button type="submit">Search</button>
+</form>
 <div class="heading">
 <ul>
 <li><a href="#" class="under">HOME</a></li>
@@ -824,31 +828,38 @@ flex-wrap: nowrap;
 
 
 <div id="section2" class="section2">
+    <div class="container">
+        
+        <!-- Gaming Laptops -->
+        <div class="items">
+            <a href="{% url 'gaming_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127794/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/PCP_4split_LP_NC_Uses_Gaming_16May2023_albe3u.png?tr=w-720" alt="Gaming Laptops">
+                </div>
+            </a>
+        </div>
 
-<div class="container">
+        <!-- Office Laptops -->
+        <div class="items">
+            <a href="{% url 'office_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127795/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/pcp_laptops_OfficeUse_16May2023_a9fklu.png?tr=w-720" alt="Office Laptops">
+                </div>
+            </a>
+        </div>
 
-<div class="items">
-    <a href="{% url 'gaming_laptops' %}">
-<div class="img img1"><img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127794/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/PCP_4split_LP_NC_Uses_Gaming_16May2023_albe3u.png?tr=w-720" alt=""></div>
+        <!-- Study Laptops -->
+        <div class="items">
+            <a href="{% url 'study_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698229080/Croma%20Assets/CMS/PCP/Oct-2023/25-10-2023/Laptop%20PCP%20Your%20Laptop%2C%20Your%20Use/Desktop/pcp_laptops_Studies_25Oct2023_qa7x0a.png?tr=w-720" alt="Study Laptops">
+                </div>
+            </a>
+        </div>
+
+    </div>
 </div>
 
-
-<div class="items">
-    <a href="{% url 'office_laptops' %}">
-<div class="img img1"><img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127795/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/pcp_laptops_OfficeUse_16May2023_a9fklu.png?tr=w-720" alt=""></div>
-</div>
-
-<div class="items">
-    <a href="{% url 'study_laptops' %}">
-<div class="img img1"><img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698229080/Croma%20Assets/CMS/PCP/Oct-2023/25-10-2023/Laptop%20PCP%20Your%20Laptop%2C%20Your%20Use/Desktop/pcp_laptops_Studies_25Oct2023_qa7x0a.png?tr=w-720" alt=""></div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</section>
 
 <div class="cont1">
     <img src="https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-08/rpl-2022-dotcom-2col-nextlevel.png" alt="">
