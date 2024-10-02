@@ -21,6 +21,13 @@ def study_laptops(request):
 def office_laptops(request):
     return render(request, 'products/office_laptops.html')
 
+def payment(request):
+    return render(request,'products/payment.html')
+
+
+def address(request):
+    return render(request,'products/address.html')
+
 
 # from django.shortcuts import render, get_object_or_404
 # from .models import Laptop
@@ -68,3 +75,7 @@ def related_laptops(request, laptop_id):
     related_laptops = laptop_graph.get_related_laptops(laptop)
 
     return render(request, 'products/related_laptops.html', {'laptops': related_laptops, 'laptop': laptop})
+
+def laptop_list(request):
+    laptops = Laptop.objects.all()  # Get all laptops from the database
+    return render(request, 'your_template.html', {'laptops': laptops})

@@ -29,6 +29,8 @@ urlpatterns = [
     path('office-laptops/', views.office_laptops, name='office_laptops'),
     path('search/', views.search_laptops, name='search_laptops'),
     path('laptop/<int:laptop_id>/', views.laptop_details, name='laptop_details'),
+    path('address/',views.address,name='address'),
+    path('payment/',views.payment,name='payment')
 
 
 
