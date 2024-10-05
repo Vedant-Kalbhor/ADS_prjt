@@ -1,14 +1,11 @@
-from django.shortcuts import redirect, render
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Laptop
-from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
-
+from .bst_graph import LaptopBST, LaptopGraph
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.contrib.auth.models import User  # Assuming you placed the classes in avl_graph.py
-
-
+from django.contrib.auth.models import User  # Assuming you placed the classes in bst_graph.py
 
 def login_page(request):
      if request.method == 'POST':
@@ -61,11 +58,6 @@ def signup_page(request):
             return render(request, 'products/signup.html')
     return render(request, 'products/signup.html')  # Rendering signup.html
 
-
-def ecommerce_website_page(request):
-    return render(request, 'products/ecommerce_website.html')  # Rendering ecommerce_website.html
-
-
 def gaming_laptops(request):
     return render(request, 'products/gaming_laptops.html')
 
@@ -91,20 +83,20 @@ def laptop_details(request, laptop_id):
 
 # from django.shortcuts import render
 # from .models import Laptop
-# from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
+# from .bst_graph import LaptopBST, LaptopGraph  # Assuming you placed the classes in bst_graph.py
 
 def search_by_price(request):
     min_price = request.GET.get('min_price', 0)
     max_price = request.GET.get('max_price', 10000)
 
     # Initialize and build the BST with all laptops
-    laptop_avl = LaptopAVL()
+    laptop_bst = LaptopBST()
     laptops = Laptop.objects.all()
     for laptop in laptops:
-        laptop_avl.insert(laptop)
+        laptop_bst.insert(laptop)
 
     # Search for laptops within the price range
-    laptops_in_range = laptop_avl.search_by_price_range(float(min_price), float(max_price))
+    laptops_in_range = laptop_bst.search_by_price_range(float(min_price), float(max_price))
 
     return render(request, 'products/search_results.html', {'laptops': laptops_in_range})
 
