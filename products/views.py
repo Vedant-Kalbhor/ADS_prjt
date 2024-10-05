@@ -74,7 +74,10 @@ def study_laptops(request):
 
 def office_laptops(request):
     return render(request, 'products/office_laptops.html')
-
+def address(request):
+    return render(request, 'products/address.html') 
+def payment(request):
+    return render(request, 'products/payment.html') 
 
 # from django.shortcuts import render, get_object_or_404
 # from .models import Laptop
