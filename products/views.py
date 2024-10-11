@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User  # Assuming you placed the classes in avl_graph.py
 
 
-
+#fyddydyduyd
 def login_page(request):
      if request.method == 'POST':
         username = request.POST['username']
