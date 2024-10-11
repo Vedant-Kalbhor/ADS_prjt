@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ laptop.brand }} {{ laptop.model_name }} Details</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            margin: 0;
+        }
+
+        table {
+            background-color: white;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-collapse: collapse;
+            max-width: 900px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        img {
+            border-radius: 10px;
+            max-height: 350px;
+            object-fit: cover;
+        }
+
+        td {
+            padding: 20px;
+            vertical-align: top;
+        }
+
+        /* Styling for text inside the table */
+        td b {
+            color: #007bff;
+        }
+
+        td strong {
+            color: #555;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Button style */
+        .buy-now-btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart-btn {
+            display: inline-block;
+            background-color: #f7ce14; /* Corrected hex code */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #218838;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #e0b713;
+        }
+
+        /* Related laptops section */
+        .related-laptops {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .related-laptops h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .related-laptops .laptop-item {
+            width: 23%;
+            margin: 1%;
+            display: inline-block;
+            vertical-align: top;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .related-laptops .laptop-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-laptops img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .related-laptops b {
+            color: #007bff;
+        }
+
+        .related-laptops strong {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            td {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+
+            img {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .buy-now-btn,
+            .add-to-cart-btn {
+                margin: 20px auto;
+            }
+
+            .related-laptops .laptop-item {
+                width: 45%;
+                margin: 2.5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .related-laptops .laptop-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ laptop.brand }} {{ laptop.model_name }} Details</h1>
+
+    <table border="3" width="100%">
+        <tr>
+            <td width="40%">
+                <img src="{{ laptop.image_url }}" alt="{{ laptop.name }}">
+            </td>
+            <td width="60%">
+                <b><font size="5">{{ laptop.name }}</font></b><br>
+                <strong>Price:</strong> ${{ laptop.price }}<br>
+                <strong>Rating:</strong> {{ laptop.rating }} stars<br>
+                <strong>Processor:</strong> {{ laptop.processor }}<br>
+                <a href="{% url 'address' %}" class="buy-now-btn">Buy Now</a>
+                <a href="#" class="add-to-cart-btn">Add to Cart</a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Recommended Laptops Section -->
+    <div class="related-laptops">
+        <h2>Recommended Laptops</h2>
+
+        <!-- Laptop 1 -->
+        <div class="laptop-item">
+            <img src="recommended_laptop_1.jpg" alt="Laptop 1">
+            <b>Laptop Brand 1</b>
+            <strong>$999</strong>
+        </div>
+
+        <!-- Laptop 2 -->
+        <div class="laptop-item">
+            <img src="recommended_laptop_2.jpg" alt="Laptop 2">
+            <b>Laptop Brand 2</b>
+            <strong>$899</strong>
+        </div>
+
+        <!-- Laptop 3 -->
+        <div class="laptop-item">
+            <img src="recommended_laptop_3.jpg" alt="Laptop 3">
+            <b>Laptop Brand 3</b>
+            <strong>$799</strong>
+        </div>
+
+        <!-- Laptop 4 -->
+        <div class="laptop-item">
+            <img src="recommended_laptop_4.jpg" alt="Laptop 4">
+            <b>Laptop Brand 4</b>
+            <strong>$1199</strong>
+        </div>
+    </div>
+
+</body>
+</html>

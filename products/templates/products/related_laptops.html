@@ -1,0 +1,15 @@
+<h1>Related Laptops for {{ laptop.brand }} {{ laptop.model_name }}</h1>
+
+<table>
+    {% for related_laptop in laptops %}
+    <tr>
+        <td>{{ related_laptop.brand }}</td>
+        <td>{{ related_laptop.model_name }}</td>
+        <td>{{ related_laptop.processor }}</td>
+        <td>${{ related_laptop.price }}</td>
+        <td>{{ related_laptop.graphics_card }}</td>
+        <td>{{ related_laptop.laptop_type }}</td>
+        <td><img src="{{ related_laptop.image_url }}" alt="{{ related_laptop.model_name }}" width="100"></td>
+    </tr>
+    {% endfor %}
+</table>
