@@ -13,6 +13,7 @@ from django.contrib.auth.models import User  # Assuming you placed the classes i
 
 
 #fyddydyduyd
+# This is a comment 
 def login_page(request):
      if request.method == 'POST':
         username = request.POST['username']
