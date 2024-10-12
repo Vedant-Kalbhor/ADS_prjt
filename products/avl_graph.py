@@ -85,15 +85,73 @@ def search_products_by_price(root, min_price, max_price):
     avl_tree = AVLTree()
     return avl_tree.search_by_price(root, min_price, max_price)
 
-class LaptopGraph:
+# class LaptopGraph:
+#     def __init__(self):
+#         # A dictionary where each brand/type points to a list of laptops (nodes)
+#         self.graph = defaultdict(list)
+
+#     def add_laptop(self, laptop):
+#         # Add a laptop to the graph based on its brand and type
+#         self.graph[(laptop.brand, laptop.laptop_type)].append(laptop)
+
+#     def get_related_laptops(self, laptop):
+#         # Get all laptops that are related by brand and type
+#         return self.graph.get((laptop.brand, laptop.laptop_type), [])
+
+class Graph:
     def __init__(self):
-        # A dictionary where each brand/type points to a list of laptops (nodes)
-        self.graph = defaultdict(list)
+        self.graph = {}
 
-    def add_laptop(self, laptop):
-        # Add a laptop to the graph based on its brand and type
-        self.graph[(laptop.brand, laptop.laptop_type)].append(laptop)
+    def add_edge(self, laptop1, laptop2, weight):
+        """Add or update an undirected edge between two laptops with a given weight."""
+        if laptop1 not in self.graph:
+            self.graph[laptop1] = {}
+        if laptop2 not in self.graph:
+            self.graph[laptop2] = {}
 
-    def get_related_laptops(self, laptop):
-        # Get all laptops that are related by brand and type
-        return self.graph.get((laptop.brand, laptop.laptop_type), [])
+        # Add weight to the edge, representing similarity in specs
+        self.graph[laptop1][laptop2] = self.graph[laptop1].get(laptop2, 0) + weight
+        self.graph[laptop2][laptop1] = self.graph[laptop2].get(laptop1, 0) + weight
+
+    def build_graph(self, laptops):
+        """Build a graph with weighted edges based on shared specifications."""
+        for i, laptop1 in enumerate(laptops):
+            for j, laptop2 in enumerate(laptops):
+                if i != j:
+                    weight = 0
+                    if laptop1.ram == laptop2.ram:
+                        weight += 1
+                    if laptop1.processor == laptop2.processor:
+                        weight += 1
+                    if laptop1.graphics_card == laptop2.graphics_card:
+                        weight += 1
+                    if laptop1.display_size == laptop2.display_size:
+                        weight += 1
+                    if abs(laptop1.price - laptop2.price) <= 1000:  # Allow slight price variation
+                        weight += 1
+
+                    if weight > 0:
+                        self.add_edge(laptop1, laptop2, weight)
+
+    def get_similar_laptops(self, laptop, company):
+        """Find laptops most similar to the given one using BFS and maximum edge weight."""
+        if laptop not in self.graph:
+            return []
+
+        visited = set()
+        queue = [(laptop, 0)]  # Queue stores (laptop, edge_weight)
+        similar_laptops = []
+
+        while queue:
+            current_laptop, current_weight = queue.pop(0)
+            visited.add(current_laptop)
+
+            for neighbor, weight in self.graph[current_laptop].items():
+                if neighbor not in visited and neighbor.company != company:
+                    if weight >= current_weight:  # Only follow the edges with maximum similarity
+                        similar_laptops.append(neighbor)
+                        queue.append((neighbor, weight))
+                        visited.add(neighbor)
+
+        return similar_laptops
+

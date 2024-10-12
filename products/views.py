@@ -3,9 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Laptop
 # from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
 from django.core.cache import cache
-from .models import Product
-from .avl_graph import AVLTree, search_products_by_price
-
+from .models import Laptop
+from .avl_graph import AVLTree, search_products_by_price , Graph 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -141,7 +140,7 @@ def laptop_search(request):
         filtered_products.append(product)
 
     # Render the results
-    return render(request, 'search_results.html', {'products': filtered_products})
+    return render(request, 'products/search_results.html', {'products': filtered_products})
 
 def laptop_details(request, laptop_id):
     laptop = get_object_or_404(Laptop, id=laptop_id)
@@ -152,32 +151,34 @@ def laptop_details(request, laptop_id):
 # from .models import Laptop
 # from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
 
-def search_by_price(request):
-    min_price = request.GET.get('min_price', 0)
-    max_price = request.GET.get('max_price', 10000)
 
-    # Initialize and build the BST with all laptops
-    laptop_avl = LaptopAVL()
+def build_laptop_graph():
+    """Build a weighted graph based on laptop specifications."""
+    laptop_graph = Graph()
+
     laptops = Laptop.objects.all()
-    for laptop in laptops:
-        laptop_avl.insert(laptop)
+    laptop_graph.build_graph(laptops)
 
-    # Search for laptops within the price range
-    laptops_in_range = laptop_avl.search_by_price_range(float(min_price), float(max_price))
+    return laptop_graph
 
-    return render(request, 'products/search_results.html', {'laptops': laptops_in_range})
+def update_graph_cache():
+    """Build the graph and cache it indefinitely."""
+    laptop_graph = build_laptop_graph()
+    cache.set('laptop_graph', laptop_graph, timeout=None)
 
+def laptop_recommendation(request, laptop_id):
+    """Recommend laptops based on similarity in specifications."""
+    # Retrieve the graph from cache
+    laptop_graph = cache.get('laptop_graph')
 
-def related_laptops(request, laptop_id):
+    if not laptop_graph:
+        laptop_graph = build_laptop_graph()
+        cache.set('laptop_graph', laptop_graph, timeout=None)
+
+    # Get the current laptop that the user searched for
     laptop = Laptop.objects.get(id=laptop_id)
 
-    # Initialize and build the Graph with all laptops
-    laptop_graph = LaptopGraph()
-    all_laptops = Laptop.objects.all()
-    for lap in all_laptops:
-        laptop_graph.add_laptop(lap)
+    # Get recommendations: similar laptops from different companies with max edge weight
+    recommendations = laptop_graph.get_similar_laptops(laptop, laptop.company)
 
-    # Get related laptops by brand and type
-    related_laptops = laptop_graph.get_related_laptops(laptop)
-
-    return render(request, 'products/related_laptops.html', {'laptops': related_laptops, 'laptop': laptop})
+    return render(request, 'products/related_laptops.html', {'recommendations': recommendations})
