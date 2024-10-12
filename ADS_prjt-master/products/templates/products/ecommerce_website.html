@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+
+
+<style>
+    body{
+        background-color: rgb(0,0,0,0.9);
+    }
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+}
+html {
+scroll-behavior: smooth;
+}
+
+header {
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+height: 60px;
+width: 100%;
+background: black;
+}
+.heading ul {
+display: flex;
+}
+.logo a {
+color: white;
+transition-duration: 1s;
+font-weight: 800;
+}
+.logo a:hover {
+color: rgb(240, 197, 6);
+transition-duration: 1s;
+}
+.heading ul li {
+list-style: none;
+}
+.heading ul li a {
+margin: 5px;
+text-decoration: none;
+color: black;
+font-weight: 500;
+position: relative;
+color: white;
+margin: 2px 14px;
+font-size: 18px;
+transition-duration: 1s;
+}
+.heading ul li a:active {
+color: red;
+}
+.heading ul li a:hover {
+color: rgb(243, 168, 7);
+transition-duration: 1s;
+}
+
+.heading ul li a::before {
+content: "";
+height: 2px;
+width: 0px;
+position: absolute;
+left: 0;
+bottom: 0;
+background-color: white;
+transition-duration: 1s;
+}
+.heading ul li a:hover::before {
+width: 100%;
+transition-duration: 1s;
+background-color: rgb(243, 168, 7);
+}
+#input {
+height: 30px;
+width: 500px;
+text-decoration: none;
+border: 0px;
+padding: 5px;
+}
+.logo a {
+color: white;
+font-size: 35px;
+font-weight: 500;
+text-decoration: none;
+}
+ion-icon {
+width: 30px;
+height: 30px;
+background-color: white;
+color: black;
+}
+ion-icon:hover {
+cursor: pointer;
+}
+.search a {
+display: flex;
+
+}
+header a ion-icon {
+position: relative;
+right: 3px;
+}
+
+.img-slider img {
+height: 720px;
+width: 1080px;
+ border-radius: 20px;
+}
+@keyframes slide {
+0% {
+left: 0px;
+}
+15% {
+left: 0px;
+}
+20% {
+left: -1080px;
+}
+32% {
+left: -1080px;
+}
+35% {
+left: -2160px;
+}
+47% {
+left: -2160px;
+}
+50% {
+left: -3240px;
+}
+63% {
+left: -3240px;
+}
+66% {
+left: -4320px;
+}
+79% {
+left: -4320px;
+}
+82% {
+left: -5400px;
+}
+100% {
+left: 0px;
+}
+}
+.img-slider {
+border-radius: 20px;
+display: flex;
+float: left;
+position: relative;
+width: 1080px;
+height: 720px;
+animation-name: slide;
+animation-duration: 10s;
+animation-iteration-count: infinite;
+transition-duration: 2s;
+}
+
+.heading1 {
+opacity: 0;
+}
+.search {
+display: flex;
+position: relative;
+}
+.section1 {
+width: 1080px;
+overflow: hidden;
+
+justify-content: center;
+align-items: center;
+margin: 0px auto;
+}
+
+.section2 .container {
+display: flex;
+width: 100%;
+height: max-content;
+flex-wrap: wrap;
+justify-content: center;
+margin: 10px auto;
+}
+.section2 .container .items {
+margin: 10px;
+width: 400px;
+height: 300px;
+background-color: white;
+border: 2.5px solid black;
+border-radius: 12px;
+transition: transform 0.25s ease; /* Smooth transition */
+
+}
+.section2 .container .items:hover {
+    transform: translateY(-20px); /* Moves the box 10px upward */
+  }
+.section2 .container .items .name {
+text-align: center;
+background-color: rgb(240, 197, 6);
+height: 25px;
+padding-top: 4px;
+color: white;
+margin: 0;
+}
+.section2 .container .items .price {
+float: left;
+padding-left: 10px;
+display: block;
+width: 100%;
+color: rgb(255, 0, 0);
+font-weight: 650;
+}
+.section2 .container .items .info {
+padding-left: 10px;
+color: rgb(243, 168, 7);
+}
+.section2 .container .items .img img {
+width: 400px;
+height: 300px;
+object-fit: fill;
+margin: 0;
+padding: 0;
+border-radius: 12px;
+transition-duration: 0.8s;
+}
+.section2 .container .items .img {
+overflow: hidden;
+margin: 0;
+}
+.section2 .container .items:hover .img img {
+transform: scale(1.2);
+transition-duration: 0.8s;
+border-radius: 12px;
+}
+footer {
+display: flex;
+flex-direction: column;
+background-color: black;
+align-items: center;
+color: white;
+}
+
+.footer1 {
+display: flex;
+flex-direction: column;
+align-items: center;
+color: white;
+margin-top: 15px;
+}
+.social-media {
+display: flex;
+justify-content: center;
+color: white;
+flex-wrap: wrap;
+}
+.social-media a {
+color: white;
+margin: 20px;
+border-radius: 5px;
+margin-top: 10px;
+color: white;
+}
+.social-media a ion-icon {
+color: white;
+background-color: black;
+}
+.social-media a:hover ion-icon {
+color: red;
+transform: translateY(5px);
+}
+.footer2 {
+display: flex;
+width: 100%;
+justify-content: space-evenly;
+align-items: center;
+text-decoration: none;
+flex-wrap: wrap;
+}
+.footer0 {
+font-weight: 1200;
+transition-duration: 1s;
+}
+.footer0:hover {
+color: rgb(243, 168, 7);
+}
+.footer2 .heading {
+font-weight: 900;
+font-size: 18px;
+}
+.footer3 {
+margin-top: 60px;
+margin-bottom: 20px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.footer2 .heading:hover {
+color: rgb(243, 168, 7);
+}
+.footer2 .div:hover {
+transform: scale(1.05);
+}
+.footer3 h4 {
+margin: 0 10px;
+}
+.footer2 div {
+margin: 10px;
+}
+.menu {
+visibility: hidden;
+}
+.heading1 .ham:active {
+color: red;
+}
+.items {
+overflow: hidden;
+}
+.ham,
+.close {
+cursor: pointer;
+}
+
+@media screen and (max-width: 1250px) {
+.heading ul li {
+display: none;
+}
+
+.items {
+transform: scale(0.9);
+}
+.img-slider img {
+height: 60vw;
+width: 80vw;
+}
+.ham:active {
+color: red;
+}
+.menu {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.menu a ion-icon {
+position: absolute;
+}
+
+@keyframes slide1 {
+0% {
+left: 0vw;
+}
+15% {
+left: 0vw;
+}
+20% {
+left: -80vw;
+}
+32% {
+left: -80vw;
+}
+35% {
+left: -160vw;
+}
+47% {
+left: -160vw;
+}
+50% {
+left: -240vw;
+}
+63% {
+left: -240vw;
+}
+66% {
+left: -320vw;
+}
+79% {
+left: -320vw;
+}
+82% {
+left: -400vw;
+}
+100% {
+left: 0vw;
+}
+}
+.menu ul {
+display: flex;
+flex-direction: column;
+position: absolute;
+width: 100vw;
+height: 100vh;
+background-color: black;
+left: 0;
+top: 0;
+z-index: 11;
+align-items: center;
+justify-content: center;
+opacity: 1;
+}
+.close {
+z-index: 34;
+
+color: white;
+background-color: black;
+}
+.close:active {
+color: red;
+}
+.menu ul li {
+list-style: none;
+margin: 20px;
+border-top: 3px solid white;
+width: 80%;
+text-align: center;
+
+padding-top: 10px;
+}
+.menu ul li a {
+text-decoration: none;
+padding-top: 10px;
+color: white;
+font-weight: 900;
+}
+.menu ul li a:hover {
+color: rgb(240, 197, 6);
+}
+.img-slider {
+display: flex;
+float: left;
+position: relative;
+width: 80%;
+height: 60%;
+animation-name: slide1;
+animation-duration: 10s;
+animation-iteration-count: infinite;
+transition-duration: 2s;
+}
+.section1 {
+width: 80%;
+overflow: hidden;
+
+justify-content: center;
+align-items: center;
+margin: 0px auto;
+}
+
+.heading1 {
+opacity: 1;
+position: relative;
+bottom: 8px;
+}
+.search a {
+display: flex;
+flex-wrap: nowrap;
+}
+
+.heading1 .ham {
+background-color: black;
+color: white;
+}
+#input {
+width: 200px;
+flex-shrink: 2;
+}
+header {
+height: 150px;
+}
+}
+
+.cont1{
+    height: 50vh;
+    width: 99vw;
+    border:2px solid black;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    height: 80vh;
+    align-items: center;
+    justify-content:flex-start;
+    
+    img{
+        height: 50vh;
+        width: 99vw;
+        object-fit: fill;
+    }
+
+    .items{
+        background-color: black;
+        margin: 20px;
+        position: relative;
+        bottom: 15vh;
+        left: 17vh;
+        z-index: 1;
+        border-radius: 10px;
+        border: 0.001px solid black;
+        height: 27vh;
+        width: 15vw;
+        
+
+        h1{ color: white;
+            padding: 7px;
+                text-align: center;
+            }
+            h3{ color: white;
+                text-align: center;
+                padding: 7px;
+            }
+            p{ color: white;
+                text-align: center;
+                padding: 7px;
+            }
+            transition-duration: 0.8s;
+    }
+
+  
+}
+.cont1 img:hover {
+    transform: scale(1.2);
+transition-duration: 0.8s;
+border-radius: 12px;
+}
+
+.cont1 .items:hover {
+    transform: translateY(-20px); /* Moves the box 10px upward */
+  }
+
+.cont2{
+    height: 50vh;
+    width: 99vw;
+    border:2px solid black;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    /* height: 80vh; */
+    align-items: center;
+    justify-content:flex-start;
+    
+    img{
+        height: 50vh;
+        width: 99vw;
+        object-fit: fill;
+        transition-duration: 0.8ms;
+    }
+
+    .items       {
+        background-color: black;
+        margin: 20px;
+        position: relative;
+        bottom: 15vh;
+        left: 35vh;
+        z-index: 1;
+        
+        border-radius: 10px;
+        height: 25vh;
+        width: 15vw;
+        h1{ color: white;
+            padding: 7px;
+                text-align: center;
+            }
+            h3{ color: white;
+                text-align: center;
+                padding: 7px;
+            }
+            p{ color: white;
+                text-align: center;
+                padding: 7px;
+            }
+            transition-duration: 0.8s;
+    }
+}
+
+.cont2 img:hover {
+    transform: scale(1.2);
+transition-duration: 0.8s;
+border-radius: 12px;
+}
+
+.cont2 .items:hover {
+    transform: translateY(-20px); /* Moves the box 10px upward */
+  }
+
+  
+.cont4{
+    height: 800px;
+    width: 500px;
+    
+.container{
+    position: relative;
+    top: 60vh;
+    left: 110vh;
+    transform: translate(-50%, -50%);
+width: 1000px;
+height: 600px;
+background: #f5f5f5;
+box-shadow: 0 30px 50px #dbdbdb;
+}
+
+.container .slide .item{
+width: 200px;
+height: 300px;
+position: absolute;
+top: 50%;
+transform: translate(0, -50%);
+border-radius: 20px;
+box-shadow: 0 30px 50px #505050;
+background-position: 50% 50%;
+background-size: cover;
+display: inline-block;
+transition: 0.5s;
+}
+
+.slide .item:nth-child(1),
+.slide .item:nth-child(2){
+top: 0;
+left: 0;
+transform: translate(0, 0);
+border-radius: 0;
+width: 100%;
+height: 100%;
+}
+
+
+.slide .item:nth-child(3){
+left: 50%;
+}
+.slide .item:nth-child(4){
+left: calc(50% + 220px);
+}
+.slide .item:nth-child(5){
+left: calc(50% + 440px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide .item:nth-child(n + 6){
+left: calc(50% + 660px);
+opacity: 0;
+}
+
+
+.item .content{
+
+position: absolute;
+top: 50%;
+left: 100px;
+width: 300px;
+text-align: left;
+color: white;
+transform: translate(0, -50%);
+font-family: system-ui;
+display: none;
+}
+
+
+.slide .item:nth-child(2) .content{
+display: block;
+}
+
+
+.content .name{
+color:white;
+font-size: 40px;
+text-transform: uppercase;
+font-weight: bold;
+opacity: 1;
+animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des{
+color: white;
+margin-top: 10px;
+margin-bottom: 20px;
+opacity: 0;
+animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button{
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+opacity: 0;
+animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+}
+
+
+@keyframes animate {
+from{
+    opacity: 0;
+    transform: translate(0, 100px);
+    filter: blur(33px);
+}
+
+to{
+    opacity: 1;
+    transform: translate(0);
+    filter: blur(0);
+}
+}
+
+.button{
+width: 100%;
+text-align: center;
+position: absolute;
+bottom: 20px;
+}
+
+.button button{
+width: 40px;
+height: 35px;
+border-radius: 8px;
+border: none;
+cursor: pointer;
+margin: 0 5px;
+border: 1px solid #000;
+transition: 0.3s;
+}
+
+.button button:hover{
+background: #ababab;
+color: #fff;
+}
+
+@media screen and (max-width: 550px) {
+.heading ul li {
+display: none;
+}
+.heading1 {
+opacity: 1;
+
+bottom: 8px;
+}
+
+header {
+height: 250px;
+flex-wrap: wrap;
+display: flex;
+flex-direction: column;
+}
+#input {
+width: 150px;
+}
+.close {
+z-index: 34;
+}
+
+.search a {
+display: flex;
+flex-wrap: nowrap;
+}
+}
+
+</style>
+
+
+
+
+<!--   CSS above  -->
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'products/css/styles.css' %}">
+{% load static %}
+<script src="{% static 'products/js/ecommerce_website.js' %}"></script>
+
+
+<img src="{% static 'products/images/image_name.jpg' %}" alt="">
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</head>
+
+<body>
+<header>
+<div class="logo"><a href="#">LaptopLoom</a></div>
+<div class="menu">
+<a href="#">
+<ion-icon name="close" class="close"></ion-icon>
+</a>
+
+<ul>
+<li><a href="#" class="under">HOME</a></li>
+<li><a href="#" class="under">SHOP</a></li>
+<li><a href="#" class="under">OUR PRODUCTS</a></li>
+<li><a href="#" class="under">CONTACT US</a></li>
+<li><a href="#" class="under">ABOUT US</a></li>
+</ul>
+</div>
+{% comment %} <div class="search">
+
+<a href=""><input type="text" placeholder="search products" id="input">
+<ion-icon class="s" name="search"></ion-icon>
+</a>
+</div> {% endcomment %}
+<form action="{% url 'search_laptops' %}" method="GET">
+    <input type="text" name="query" placeholder="Search for laptops by name...">
+    <button type="submit">Search</button>
+</form>
+<div class="heading">
+<ul>
+<li><a href="#" class="under">HOME</a></li>
+<li><a href="#section2" class="under">SHOP</a></li>
+<li><a href="#section2" class="under" >PRODUCTS</a></li>
+<li><a href="#footer" class="under">CONTACT US</a></li>
+<li><a href="#footer" class="under">ABOUT US</a></li>
+</ul>
+</div>
+<div class="heading1">
+<ion-icon name="menu" class="ham"></ion-icon>
+</div>
+</header>
+<section>
+<div class="section">
+<div class="section1">
+<div class="img-slider">
+<img src="https://img.freepik.com/premium-photo/businessman-working-with-laptop-computer-late-night_35674-8281.jpg?w=996" alt="" class="img">
+<img src="https://img.freepik.com/free-photo/businesswoman-holding-cup-coffee-analyzing-financial-graphs-typing-marketing-strategy-while-working-company-project-startup-office-executive-manager-researching-business-solution_482257-34880.jpg?t=st=1726754287~exp=1726757887~hmac=753dc74581f6e451e8aae643313162090f2573f1d5cded3edf31ffe872d52363&w=996" alt="" class="img">
+<img src="https://img.freepik.com/free-photo/view-office-desk-with-messy-workspace-laptop_23-2150282087.jpg?t=st=1726754324~exp=1726757924~hmac=c53615a08c97c25a5a5d4d0cb6512ca797cf0742aa0b26dc384d2df66e2a36fe&w=996" alt="" class="img">
+<img src="https://img.freepik.com/free-photo/young-businesswoman-drinking-coffee-with-her-eyes-closed-while-taking-break-from-work-office_637285-5178.jpg?uid=R164202707&ga=GA1.1.403187138.1726754182" alt="" class="img">
+<img src="https://img.freepik.com/free-photo/online-trends_53876-167072.jpg?uid=R164202707&ga=GA1.1.403187138.1726754182" alt="" class="img">
+</div>
+
+</div>
+
+
+
+<div id="section2" class="section2">
+    <div class="container">
+        
+        <!-- Gaming Laptops -->
+        <div class="items">
+            <a href="{% url 'gaming_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127794/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/PCP_4split_LP_NC_Uses_Gaming_16May2023_albe3u.png?tr=w-720" alt="Gaming Laptops">
+                </div>
+            </a>
+        </div>
+
+        <!-- Office Laptops -->
+        <div class="items">
+            <a href="{% url 'office_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1688127795/Croma%20Assets/CMS/PCP/June%20-2023/30-06-2023/Laptop%20PCP/Desktop/Your%20laptop%20Your%20use/pcp_laptops_OfficeUse_16May2023_a9fklu.png?tr=w-720" alt="Office Laptops">
+                </div>
+            </a>
+        </div>
+
+        <!-- Study Laptops -->
+        <div class="items">
+            <a href="{% url 'study_laptops' %}">
+                <div class="img img1">
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1698229080/Croma%20Assets/CMS/PCP/Oct-2023/25-10-2023/Laptop%20PCP%20Your%20Laptop%2C%20Your%20Use/Desktop/pcp_laptops_Studies_25Oct2023_qa7x0a.png?tr=w-720" alt="Study Laptops">
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="cont1">
+    <img src="https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-08/rpl-2022-dotcom-2col-nextlevel.png" alt="">
+    <div class="items  items1 ">
+        <h1>i3</h1>
+        <h3>Processor</h3>
+        <p>Ideal for casual use</p>
+    </div>
+    <div class="items  items2">
+        
+        <h1>i5</h1>
+        <h3>Processor</h3>
+        <p>Ideal for professional use</p>
+    </div>
+    <div class="items  items3">
+        
+        <h1>i7</h1>
+        <h3>Processor</h3>
+        <p>Ideal for business use</p>
+    </div>
+    <div class="items  items4">
+        
+        <h1>i9</h1>
+        <h3>Processor</h3>
+        <p>Ideal for Pros</p>
+        
+    </div>
+    <div class="items  items5">
+        <h1>Core Ultra</h1>
+        <h3>Processor</h3>
+        <p>Recommended AI powered</p>
+    </div>    
+</div>
+
+
+<div class="cont2">
+    <img src="https://www.91-cdn.com/hub/wp-content/uploads/2022/08/AMDR-2.jpg" alt="">
+    <div class="items  items1 ">
+        <h1>R3</h1>
+        <h3>Processor</h3>
+        <p>Ideal for personal use</p>
+    </div>
+
+    <div class="items  items2">
+        <h1>R5</h1>
+        <h3>Processor</h3>
+        <p>Ideal for Students</p>
+
+    </div>
+    <div class="items  items3">
+
+        <h1>R7</h1>
+        <h3>Processor</h3>
+        <p>Ideal for Creators</p>
+    </div>
+    <div class="items  items4">
+        <h1>R9</h1>
+        <h3>Processor</h3>
+        <p>Ideal for Gamers</p>
+
+    </div>
+</div>
+
+
+
+   <!--Font Awesome CDN-->
+
+
+<div class="cont4">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+<div class="container">
+
+    <div class="slide">
+        <div class="item" style="background-image: url(https://wallpaperaccess.com/full/4057042.jpg); ">
+            <div class="content">
+                <div class="name">DELL</div>
+             
+            </div>
+        </div>
+        <div class="item" style="background-image: url(https://wallpapercave.com/wp/wp5400924.jpg);">
+            <div class="content">
+                <div class="name">ASUS GAMING </div>
+               
+            </div>
+        </div>
+        <div class="item" style="background-image: url(https://wallpaperaccess.com/full/8199311.jpg);">
+            <div class="content">
+                <div class="name">LENOVO LEGION</div>
+               
+            </div>
+        </div>
+        <div class="item" style="background-image: url(http://wallpapercave.com/wp/wc1735690.jpg);">
+            <div class="content">
+                <div class="name">HP</div>
+              
+            </div>
+        </div>
+        <div class="item" style="background-image: url(https://e0.pxfuel.com/wallpapers/239/996/desktop-wallpaper-40-best-finest-apple-for-and-for-your-mobile-tablet-explore-apple-laptop-mac-computer-apple-apple-background-macbook.jpg);">
+            <div class="content">
+                <div class="name">APPLE</div>
+                
+            </div>
+        </div>
+        <div class="item" style="background-image: url(https://wallpapercave.com/wp/C8dzY9z.jpg);">
+            <div class="content">
+                <div class="name">ACER</div>
+                {% comment %} <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                <button>See More</button> {% endcomment %}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="button">
+        <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+<footer>
+<div id="footer" class="footer0">
+<h1>WELCOME TO LAPTOPLOOM</h1>
+</div>
+<div class="footer1 ">
+Connect with us at<div class="social-media">
+<a href="#">
+<ion-icon name="logo-facebook"></ion-icon>
+</a>
+<a href="#">
+<ion-icon name="logo-linkedin"></ion-icon>
+</a>
+<a href="#">
+<ion-icon name="logo-youtube"></ion-icon>
+</a>
+<a href="#">
+<ion-icon name="logo-instagram"></ion-icon>
+</a>
+<a href="#">
+<ion-icon name="logo-twitter"></ion-icon>
+</a>
+</div>
+<!-- </div>
+<div class="footer2">
+<div class="product">
+<div class="heading">Products</div>
+<div class="div">Sell your Products</div>
+<div class="div">Advertise</div>
+<div class="div">Pricing</div>
+<div class="div">Product Buisness</div>
+
+</div>
+<div class="services">
+<div class="heading">Services</div>
+<div class="div">Return</div>
+<div class="div">Cash Back</div>
+<div class="div">Affiliate Marketing</div>
+<div class="div">Others</div>
+</div>
+<div class="Company">
+<div class="heading">Company</div>
+<div class="div">Complaint</div>
+<div class="div">Careers</div>
+<div class="div">Affiliate Marketing</div>
+<div class="div">Support</div>
+</div>
+<div class="Get Help">
+<div class="heading">Get Help</div>
+<div class="div">Help Center</div>
+<div class="div">Privacy Policy</div>
+<div class="div">Terms</div>
+<div class="div">Login</div>
+</div>
+</div> -->
+<div class="footer3">Copyright © <h4>ShoPperZ</h4> 2021-2028</div>
+</footer>
+<script src="ecommerce_website.js"></script>
+<script>
+const close = document.querySelector(".close");
+const open = document.querySelector(".ham");
+const menu = document.querySelector(".menu");
+close.addEventListener("click", () => {
+menu.style.visibility = "hidden";
+});
+open.addEventListener("click", () => {
+menu.style.visibility = "visible";
+});
+</script>
+
+</body>
+
+</html>

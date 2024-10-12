@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Purpose Laptops</title>
+
+    <style>
+        /* Basic body styling */
+        body {
+            background-color: #1e1e1e; /* Dark background for gaming theme */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        /* Styling for the main heading */
+        h1 {
+            text-align: center;
+            color: blue; /* Gaming theme red */
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            background-color: #000;
+            margin: 0;
+        }
+
+        /* Filter and Sort section styling */
+        .filter-sort {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin: 10px 0;
+        }
+
+        .filter-section, .sort-section {
+            width: 40%;
+        }
+
+        .filter-section h3, .sort-section h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .filter-category {
+            margin-bottom: 20px;
+        }
+
+        .filter-category h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .filter-category label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .sort-section select {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        table, th, td {
+            border: 2px solid white;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Image hover effect */
+        th img, td img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        th img:hover, td img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        /* Price styling */
+        p.price {
+            margin: 10px 0 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff3333; /* Price in red */
+        }
+
+        /* Star rating styling */
+        .rating {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #ffcc00; /* Star color */
+        }
+
+        /* Section heading styling */
+        h2 {
+            background-color: #222;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            th img, td img {
+                width: 100%;
+                height: auto;
+            }
+
+            .filter-section, .sort-section {
+                width: 100%;
+            }
+
+            .filter-sort {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Study/Normal Tasks Laptops</h1>
+
+    <!-- Filter and Sort section -->
+    <div class="filter-sort">
+        <!-- Filter section -->
+        <div class="filter-section">
+            <h3>Filter</h3>
+            <!-- Brand filter -->
+            <div class="filter-category">
+                <h4>Brand</h4>
+               
+                <label><input type="checkbox"> Acer</label>
+                <label><input type="checkbox"> Asus</label>
+                <label><input type="checkbox"> Dell</label>
+                <label><input type="checkbox"> Lenovo</label>
+                <label><input type="checkbox"> HP</label>
+            </div>
+
+            <!-- Processor filter -->
+            <div class="filter-category">
+                <h4>Processor</h4>
+                <label><input type="checkbox"> i3</label>
+                <label><input type="checkbox"> i5</label>
+            
+               
+                <label><input type="checkbox"> r3</label>
+                <label><input type="checkbox"> r5</label>
+              
+              
+            </div>
+
+            <!-- Display Size filter -->
+            <div class="filter-category">
+                <h4>Display Size</h4>
+                <label><input type="checkbox"> 14 inch</label>
+                <label><input type="checkbox"> 15.6 inch</label>
+           
+            </div>
+        </div>
+
+        <!-- Sort section -->
+        <div class="sort-section">
+            <h3>Sort</h3>
+            <select id="sort-options">
+                <option value="price">Sort by Price</option>
+                <option value="rating">Sort by Rating</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Laptop Table -->
+    <table id="laptop-table">
+        <thead>
+            <tr>
+                <td colspan="4"><h2>HP</h2></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th data-price="999" data-rating="4">
+                    <img src="https://static.digit.in/New-Project-302.jpg" alt="Lenovo Laptop 1">
+                    <p class="price">$999</p>
+                    <div class="rating">★★★★☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="1099" data-rating="5">
+                    <img src="https://static.digit.in/New-Project-302.jpg" alt="Lenovo Laptop 2">
+                    <p class="price">$1,099</p>
+                    <div class="rating">★★★★★</div> <!-- Random rating -->
+                </th>
+                <th data-price="1199" data-rating="3">
+                    <img src="https://static.digit.in/New-Project-302.jpg" alt="Lenovo Laptop 3">
+                    <p class="price">$1,199</p>
+                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="1299" data-rating="4">
+                    <img src="https://static.digit.in/New-Project-302.jpg" alt="Lenovo Laptop 4">
+                    <p class="price">$1,299</p>
+                    <div class="rating">★★★★☆</div> <!-- Random rating -->
+                </th>
+            </tr>
+
+            <tr>
+                <td colspan="4"><h2>Asus</h2></td>
+            </tr>
+            <tr>
+                <th data-price="899" data-rating="2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB4D7cuhalt8aLUwmKp3EKhYuNkZWJmPUUpA&s" alt="Dell Laptop 1">
+                    <p class="price">$899</p>
+                    <div class="rating">★★☆☆☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="999" data-rating="3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB4D7cuhalt8aLUwmKp3EKhYuNkZWJmPUUpA&s" alt="Dell Laptop 2">
+                    <p class="price">$999</p>
+                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="1099" data-rating="4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB4D7cuhalt8aLUwmKp3EKhYuNkZWJmPUUpA&s" alt="Dell Laptop 3">
+                    <p class="price">$1,099</p>
+                    <div class="rating">★★★★☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="1199" data-rating="5">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB4D7cuhalt8aLUwmKp3EKhYuNkZWJmPUUpA&s" alt="Dell Laptop 4">
+                    <p class="price">$1,199</p>
+                    <div class="rating">★★★★★</div> <!-- Random rating -->
+                </th>
+            </tr>
+
+            <tr>
+                <td colspan="4"><h2>Lenovo</h2></td>
+            </tr>
+            <tr>
+                <th data-price="799" data-rating="3">
+                    <img src="https://m.media-amazon.com/images/I/51iVT7XrGLL._AC_UF1000,1000_QL80_.jpg" alt="Asus Laptop 1">
+                    <p class="price">$799</p>
+                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="899" data-rating="4">
+                    <img src="https://m.media-amazon.com/images/I/51iVT7XrGLL._AC_UF1000,1000_QL80_.jpg" alt="Asus Laptop 2">
+                    <p class="price">$899</p>
+                    <div class="rating">★★★★☆</div> <!-- Random rating -->
+                </th>
+                <th data-price="999" data-rating="5">
+                    <img src="https://m.media-amazon.com/images/I/51iVT7XrGLL._AC_UF1000,1000_QL80_.jpg" alt="Asus Laptop 3">
+                    <p class="price">$999</p>
+                    <div class="rating">★★★★★</div> <!-- Random rating -->
+                </th>
+                <th data-price="1099" data-rating="4">
+                    <img src="https://m.media-amazon.com/images/I/51iVT7XrGLL._AC_UF1000,1000_QL80_.jpg" alt="Asus Laptop 4">
+                    <p class="price">$1,099</p>
+                    <div class="rating">★★★★☆</div> <!-- Random rating -->
+                </th>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- JavaScript for Sorting -->
+    <script>
+        document.getElementById('sort-options').addEventListener('change', function() {
+            const sortOption = this.value;
+            const laptops = Array.from(document.querySelectorAll('#laptop-table th'));
+
+            laptops.sort((a, b) => {
+                if (sortOption === 'price') {
+                    return a.getAttribute('data-price') - b.getAttribute('data-price');
+                } else if (sortOption === 'rating') {
+                    return b.getAttribute('data-rating') - a.getAttribute('data-rating');
+                }
+            });
+
+            // Reorder the table based on sorted values
+            const tbody = document.querySelector('#laptop-table tbody');
+            laptops.forEach(laptop => tbody.appendChild(laptop.parentElement));
+        });
+    </script>
+</body>
+</html>
