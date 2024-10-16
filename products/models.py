@@ -7,18 +7,15 @@ from django.dispatch import receiver
 class Laptop(models.Model):
     brand = models.CharField(max_length=255)
     model_name = models.CharField(max_length=255)
+    ram = models.IntegerField(default=8)
+    display = models.DecimalField(max_digits=10, decimal_places=2 , default=15.6)
     processor = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     graphics_card = models.CharField(max_length=255)
     laptop_type = models.CharField(max_length=255, choices=[('Professional', 'Professional'), ('Gaming', 'Gaming'), ('Daily Use', 'Daily Use')])
     image_url = models.URLField(max_length=500)
     rating = models.IntegerField(default=4)
-    ram=models.IntegerField(default=8,help_text='RAM size in GB')
-    display_size = models.DecimalField(
-        max_digits=4, decimal_places=1, default=15.6, 
-        help_text='Display size in inches'
-    )
-
+    ram = models.IntegerField(default=8, help_text='RAM size in GB')
 
     def __str__(self):
         return f"{self.brand} {self.model_name}"

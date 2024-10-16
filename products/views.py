@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User  # Assuming you placed the classes in avl_graph.py
-
+import decimal
 
 #fyddydyduyd
 # This is a comment 
@@ -125,47 +125,57 @@ def update_tree_cache():
     cache.set('avl_tree', root, timeout=None)  # Cache indefinitely
 
 def search_laptops(request):
-    filters = {
-        # 'price_min': float(request.GET.get('price_min', 0)),
-        # 'price_max': float(request.GET.get('price_max', float('inf'))),
+        filters = {
         'processors': request.GET.getlist('processor'),
         'graphics_cards': request.GET.getlist('graphics_card'),
-        'companies': request.GET.getlist('company'),
+        'companies': request.GET.getlist('brand'),
         'display_size': request.GET.getlist('display_size'),
     }
 
     # Retrieve the AVL tree from cache
-    root = cache.get('avl_tree')
+        root = cache.get('avl_tree')
 
-    if not root:
+        if not root:
         # If tree not found in cache, build and cache it
-        root = build_avl_tree()
-        cache.set('avl_tree', root, timeout=None)
+            root = build_avl_tree()
+            cache.set('avl_tree', root, timeout=None)
 
     # Step 1: Search by price range using the AVL tree
-    min_price = float(request.GET.get('min-price', 0))
-    max_price = float(request.GET.get('max-price', float('inf')))
-    products_in_price_range = search_products_by_price(root, min_price, max_price)
+        min_price = float(request.GET.get('price_min', 0))  # Removed comma
+        max_price = float(request.GET.get('price_max', float('inf')))  # Removed comma
+    
+        products_in_price_range = search_products_by_price(root, min_price, max_price)
 
     # Step 2: Filter based on checkbox options
-    filtered_products = []
-    for product in products_in_price_range:
-        if filters['processors'] and product.processor not in filters['processors']:
-            continue
-        if filters['graphics_cards'] and product.graphics_card not in filters['graphics_cards']:
-            continue
-        if filters['companies'] and product.company not in filters['companies']:
-            continue
-        if filters['display_size'] and product.display_size not in filters['display_size']:
-            continue
-        filtered_products.append(product)
+        filtered_products = []
+        for product in products_in_price_range:
+            if filters['processors'] and product.processor not in filters['processors']:
+                continue
+            if filters['graphics_cards'] and product.graphics_card not in filters['graphics_cards']:
+                continue
+            if filters['companies'] and product.brand not in filters['companies']:
+                continue
+            if filters['display_size'] and product.display not in filters['display_size']:
+                continue
+            filtered_products.append(product)
 
     # Render the results
-    return render(request, 'products/search_results.html', {'products': filtered_products})
-
+        return render(request, 'products/search_results.html', {'products': filtered_products})
 def laptop_details(request, laptop_id):
     laptop = get_object_or_404(Laptop, id=laptop_id)
-    return render(request, 'products/details.html', {'laptop': laptop})
+    laptop_graph = cache.get('laptop_graph')
+
+    if not laptop_graph:
+        laptop_graph = build_laptop_graph()
+        cache.set('laptop_graph', laptop_graph, timeout=None)
+
+    # Get the current laptop that the user searched for
+    laptop = Laptop.objects.get(id=laptop_id)
+
+    # Get recommendations: similar laptops from different companies with max edge weight
+    recommendations = laptop_graph.get_similar_laptops(laptop, laptop.brand)
+    return render(request, 'products/details.html', {'laptop': laptop , 
+                                                     'recommendations': recommendations})
 
 
 # from django.shortcuts import render
