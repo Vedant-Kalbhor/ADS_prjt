@@ -493,6 +493,7 @@
                                  <a href="{% url 'laptop_details' laptop.id %}">
                                      <img src="{{ laptop.image_url }}" alt="{{ laptop.model_name }}">
                                  </a>
+                                 <p class="">{{ laptop.model_name }}</p>
                                  <p class="price">${{ laptop.price }}</p>
                                  <div class="rating">Rating: {{ laptop.rating }}/5</div>
                              </th>
