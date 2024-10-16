@@ -13,6 +13,8 @@ from django.contrib.auth.models import User  # Assuming you placed the classes i
 
 #fyddydyduyd
 # This is a comment 
+
+
 def login_page(request):
      if request.method == 'POST':
         username = request.POST['username']
@@ -65,18 +67,37 @@ def signup_page(request):
     return render(request, 'products/signup.html')  # Rendering signup.html
 
 
+def search_laptops_by_model(request):
+    query = request.GET.get('model_name', '')  # Get the search query from the request
+    laptop = None
+
+    if query:
+        laptop = get_object_or_404(Laptop, model_name__iexact=query)  # Search by model name (case-insensitive)
+
+    return render(request, 'products/search_laptops_by_model.html', {'laptop': laptop, 'query': query})
+
 def ecommerce_website_page(request):
     return render(request, 'products/ecommerce_website.html')  # Rendering ecommerce_website.html
 
 
 def gaming_laptops(request):
-    return render(request, 'products/gaming_laptops.html')
+    # Fetch all gaming laptops from the database
+    laptops = Laptop.objects.filter(laptop_type='Gaming')
+    brands = ['Acer', 'Asus', 'Dell', 'Lenovo', 'HP']  # List of brands
+
+    return render(request, 'products/gaming_laptops.html', {'laptops': laptops, 'brands':brands})
 
 def study_laptops(request):
-    return render(request, 'products/study_laptops.html')
+    laptops = Laptop.objects.filter(laptop_type='Daily Use')
+    brands = ['Acer', 'Asus', 'Dell', 'Lenovo', 'HP' , 'Apple']  # List of brands
+
+    return render(request, 'products/study_laptops.html', {'laptops': laptops, 'brands':brands})
 
 def office_laptops(request):
-    return render(request, 'products/office_laptops.html')
+    laptops = Laptop.objects.filter(laptop_type='Professional')
+    brands = ['Acer', 'Asus', 'Dell', 'Lenovo', 'HP' , 'Apple']  # List of brands
+
+    return render(request, 'products/office_laptops.html', {'laptops': laptops, 'brands':brands})
 def  address(request):
     return render(request, 'products/address.html')
 def  payment(request):
@@ -103,10 +124,10 @@ def update_tree_cache():
     root = build_avl_tree()
     cache.set('avl_tree', root, timeout=None)  # Cache indefinitely
 
-def laptop_search(request):
+def search_laptops(request):
     filters = {
-        'price_min': float(request.GET.get('price_min', 0)),
-        'price_max': float(request.GET.get('price_max', float('inf'))),
+        # 'price_min': float(request.GET.get('price_min', 0)),
+        # 'price_max': float(request.GET.get('price_max', float('inf'))),
         'processors': request.GET.getlist('processor'),
         'graphics_cards': request.GET.getlist('graphics_card'),
         'companies': request.GET.getlist('company'),
@@ -122,8 +143,8 @@ def laptop_search(request):
         cache.set('avl_tree', root, timeout=None)
 
     # Step 1: Search by price range using the AVL tree
-    min_price = filters['price_min']
-    max_price = filters['price_max']
+    min_price = float(request.GET.get('min-price', 0))
+    max_price = float(request.GET.get('max-price', float('inf')))
     products_in_price_range = search_products_by_price(root, min_price, max_price)
 
     # Step 2: Filter based on checkbox options

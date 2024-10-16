@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Laptop</title>
+</head>
+<body>
+    <h1>Search for a Laptop by Model Name</h1>
+
+    
+
+    {% if laptop %}
+        <h2>Details for {{ laptop.model_name }}</h2>
+        <ul>
+            <li>Brand: {{ laptop.brand }}</li>
+            <li>RAM: {{ laptop.ram }} GB</li>
+            <li>Processor: {{ laptop.processor }}</li>
+            <li>Graphics Card: {{ laptop.graphics_card }}</li>
+            <li>Display Size: {{ laptop.display_size }} inches</li>
+            <li>Price: ${{ laptop.price }}</li>
+        </ul>
+    {% else %}
+        {% if query %}
+            <p>No laptop found with the model name "{{ query }}"</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

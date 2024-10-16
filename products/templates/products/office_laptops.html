@@ -6,156 +6,156 @@
     <title>Office Laptops</title>
 
     <style>
-        /* Basic body styling */
+     
         body {
-            background-color: #1e1e1e; /* Dark background for gaming theme */
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #f0f2f5, #ffffff); /* Soft gradient background */
+            font-family: 'Poppins', sans-serif; /* Elegant font */
             margin: 0;
             padding: 0;
-            color: white;
+            color: #333;
         }
 
-        /* Styling for the main heading */
+        /* Main Heading Styling */
         h1 {
             text-align: center;
-            color: green; /* Gaming theme red */
+            color: #4CAF50; /* Professional green */
             font-size: 48px;
             text-transform: uppercase;
             letter-spacing: 4px;
             padding: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            background-color: #000;
             margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background-color: #fff;
+            border-bottom: 3px solid #4CAF50;
         }
 
-        /* Filter and Sort section styling */
+        /* Filter and Sort Section */
         .filter-sort {
             display: flex;
             justify-content: space-around;
             padding: 20px;
-            background-color: #333;
-            color: #fff;
-            margin: 10px 0;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 90%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .filter-section, .sort-section {
-            width: 40%;
+            width: 45%;
         }
 
         .filter-section h3, .sort-section h3 {
             margin-bottom: 10px;
-            font-size: 20px;
+            font-size: 24px;
+            color: #333;
         }
 
         .filter-category {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .filter-category h4 {
-            margin-bottom: 10px;
             font-size: 18px;
+            margin-bottom: 8px;
             text-transform: uppercase;
+            color: #555;
         }
 
         .filter-category label {
             display: block;
             margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
         }
 
         .sort-section select {
             width: 100%;
-            padding: 5px;
+            padding: 10px;
             font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff;
         }
 
-        /* Table styling */
+        /* Table Styling */
         table {
-            width: 100%;
+            width: 90%;
             margin: 20px auto;
             border-collapse: collapse;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-        }
-
-        table, th, td {
-            border: 2px solid white;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 15px;
+            padding: 20px;
             text-align: center;
-            background-color: #fff;
-            color: #000;
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        /* Image hover effect */
-        th img, td img {
+        th img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease; /* Smooth transition */
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
         }
 
-        th img:hover, td img:hover {
-            transform: scale(1.1); /* Zoom effect on hover */
+        th img:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
-        /* Price styling */
         p.price {
-            margin: 10px 0 0;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ff3333; /* Price in red */
-        }
-
-        /* Star rating styling */
-        .rating {
             margin-top: 10px;
             font-size: 20px;
-            color: #ffcc00; /* Star color */
+            font-weight: bold;
+            color: #4CAF50; /* Professional green */
         }
 
-        /* Section heading styling */
+        .rating {
+            margin-top: 5px;
+            font-size: 18px;
+            color: #fbc02d; /* Star yellow */
+        }
+
         h2 {
-            background-color: #222;
-            color: #fff;
-            padding: 10px;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 15px;
             margin: 0;
-            text-align: center;
+            font-size: 24px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid #ddd;
         }
 
-        /* Responsive design for smaller screens */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            th img, td img {
-                width: 100%;
-                height: auto;
+            .filter-sort {
+                flex-direction: column;
+                width: 95%;
             }
 
             .filter-section, .sort-section {
                 width: 100%;
-            }
-
-            .filter-sort {
-                flex-direction: column;
-                align-items: center;
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
+
     <h1>Office Laptops</h1>
 
-    <!-- Filter and Sort section -->
+    <!-- Filter and Sort Section -->
     <div class="filter-sort">
-        <!-- Filter section -->
         <div class="filter-section">
             <h3>Filter</h3>
-            <!-- Brand filter -->
+
             <div class="filter-category">
                 <h4>Brand</h4>
-                <label><input type="checkbox">Apple </label>
+                <label><input type="checkbox"> Apple</label>
                 <label><input type="checkbox"> Acer</label>
                 <label><input type="checkbox"> Asus</label>
                 <label><input type="checkbox"> Dell</label>
@@ -163,7 +163,6 @@
                 <label><input type="checkbox"> HP</label>
             </div>
 
-            <!-- Processor filter -->
             <div class="filter-category">
                 <h4>Processor</h4>
                 <label><input type="checkbox"> i3</label>
@@ -176,7 +175,6 @@
                 <label><input type="checkbox"> r9</label>
             </div>
 
-            <!-- Display Size filter -->
             <div class="filter-category">
                 <h4>Display Size</h4>
                 <label><input type="checkbox"> 14 inch</label>
@@ -185,7 +183,6 @@
             </div>
         </div>
 
-        <!-- Sort section -->
         <div class="sort-section">
             <h3>Sort</h3>
             <select id="sort-options">
@@ -193,94 +190,41 @@
                 <option value="rating">Sort by Rating</option>
             </select>
         </div>
+
+        <div class="filter-category">
+            <h4>Price Range</h4>
+            <label for="min-price">Min Price:</label>
+            <input type="number" id="min-price" placeholder="Min">
+            <label for="max-price">Max Price:</label>
+            <input type="number" id="max-price" placeholder="Max">
+            <button id="apply-filter">Apply</button>
+        </div>
+        
     </div>
 
-    <!-- Laptop Table -->
     <table id="laptop-table">
-        <thead>
-            <tr>
-                <td colspan="4"><h2>Dell</h2></td>
-            </tr>
-        </thead>
         <tbody>
-            <tr>
-                <th data-price="999" data-rating="4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ENYLN2LXLCk6ASs_DQ_hyhc8LM7GIbH6ZA&s" alt="Lenovo Laptop 1">
-                    <p class="price">$999</p>
-                    <div class="rating">★★★★☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="1099" data-rating="5">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ENYLN2LXLCk6ASs_DQ_hyhc8LM7GIbH6ZA&s" alt="Lenovo Laptop 2">
-                    <p class="price">$1,099</p>
-                    <div class="rating">★★★★★</div> <!-- Random rating -->
-                </th>
-                <th data-price="1199" data-rating="3">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ENYLN2LXLCk6ASs_DQ_hyhc8LM7GIbH6ZA&s" alt="Lenovo Laptop 3">
-                    <p class="price">$1,199</p>
-                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="1299" data-rating="4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4ENYLN2LXLCk6ASs_DQ_hyhc8LM7GIbH6ZA&s" alt="Lenovo Laptop 4">
-                    <p class="price">$1,299</p>
-                    <div class="rating">★★★★☆</div> <!-- Random rating -->
-                </th>
-            </tr>
-
-            <tr>
-                <td colspan="4"><h2>Apple</h2></td>
-            </tr>
-            <tr>
-                <th data-price="899" data-rating="2">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY10bkSPY-TQgvSyh4zXcbtqdFUFdj60pUEg&s" alt="Dell Laptop 1">
-                    <p class="price">$899</p>
-                    <div class="rating">★★☆☆☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="999" data-rating="3">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY10bkSPY-TQgvSyh4zXcbtqdFUFdj60pUEg&s" alt="Dell Laptop 2">
-                    <p class="price">$999</p>
-                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="1099" data-rating="4">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY10bkSPY-TQgvSyh4zXcbtqdFUFdj60pUEg&s" alt="Dell Laptop 3">
-                    <p class="price">$1,099</p>
-                    <div class="rating">★★★★☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="1199" data-rating="5">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRY10bkSPY-TQgvSyh4zXcbtqdFUFdj60pUEg&s" alt="Dell Laptop 4">
-                    <p class="price">$1,199</p>
-                    <div class="rating">★★★★★</div> <!-- Random rating -->
-                </th>
-            </tr>
-
-            <tr>
-                <td colspan="4"><h2>Lenovo</h2></td>
-            </tr>
-            <tr>
-                <th data-price="799" data-rating="3">
-                    <img src="https://m.media-amazon.com/images/I/71ezE1qHi6L.jpg" alt="Asus Laptop 1">
-                    <p class="price">$799</p>
-                    <div class="rating">★★★☆☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="899" data-rating="4">
-                    <img src="https://m.media-amazon.com/images/I/71ezE1qHi6L.jpg" alt="Asus Laptop 2">
-                    <p class="price">$899</p>
-                    <div class="rating">★★★★☆</div> <!-- Random rating -->
-                </th>
-                <th data-price="999" data-rating="5">
-                    <img src="https://m.media-amazon.com/images/I/71ezE1qHi6L.jpg" alt="Asus Laptop 3">
-                    <p class="price">$999</p>
-                    <div class="rating">★★★★★</div> <!-- Random rating -->
-                </th>
-                <th data-price="1099" data-rating="4">
-                    <img src="https://m.media-amazon.com/images/I/71ezE1qHi6L.jpg" alt="Asus Laptop 4">
-                    <p class="price">$1,099</p>
-                    <div class="rating">★★★★☆</div> <!-- Random rating -->
-                </th>
-            </tr>
+            {% for brand in brands %}
+                <tr>
+                    <td colspan="4"><h2>{{ brand }}</h2></td>
+                </tr>
+                <tr>
+                    {% for laptop in laptops %}
+                        {% if laptop.brand == brand and laptop.laptop_type == 'Professional' %}
+                            <th data-price="{{ laptop.price }}" data-rating="{{ laptop.rating }}">
+                                <a href="{% url 'laptop_details' laptop.id %}">
+                                    <img src="{{ laptop.image_url }}" alt="{{ laptop.model_name }}">
+                                </a>
+                                <p class="price">${{ laptop.price }}</p>
+                                <div class="rating">Rating: {{ laptop.rating }}/5</div>
+                            </th>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <!-- JavaScript for Sorting -->
     <script>
         document.getElementById('sort-options').addEventListener('change', function() {
             const sortOption = this.value;
@@ -294,10 +238,10 @@
                 }
             });
 
-            // Reorder the table based on sorted values
             const tbody = document.querySelector('#laptop-table tbody');
             laptops.forEach(laptop => tbody.appendChild(laptop.parentElement));
         });
     </script>
+
 </body>
 </html>

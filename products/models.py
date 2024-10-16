@@ -1,8 +1,8 @@
 from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from .models import Product
-from .views import update_tree_cache
+
+
 
 class Laptop(models.Model):
     brand = models.CharField(max_length=255)
@@ -12,6 +12,7 @@ class Laptop(models.Model):
     graphics_card = models.CharField(max_length=255)
     laptop_type = models.CharField(max_length=255, choices=[('Professional', 'Professional'), ('Gaming', 'Gaming'), ('Daily Use', 'Daily Use')])
     image_url = models.URLField(max_length=500)
+    rating = models.IntegerField(default=4)
 
     def __str__(self):
         return f"{self.brand} {self.model_name}"
@@ -22,7 +23,9 @@ class Laptop(models.Model):
 
 
 
-@receiver(post_save, sender=Product)
-@receiver(post_delete, sender=Product)
+@receiver(post_save, sender=Laptop)
+@receiver(post_delete, sender=Laptop)
 def rebuild_avl_tree(sender, instance, **kwargs):
+
+    from .views import update_tree_cache
     update_tree_cache()

@@ -795,8 +795,13 @@ flex-wrap: nowrap;
 <ion-icon class="s" name="search"></ion-icon>
 </a>
 </div> {% endcomment %}
-<form action="{% url 'search_laptops' %}" method="GET">
+<!-- <form action="{% url 'search_laptops_by_model' %}" method="GET">
     <input type="text" name="query" placeholder="Search for laptops by name...">
+    <button type="submit">Search</button> -->
+<!-- </form> -->
+
+<form method="GET" action="{% url 'search_laptops_by_model' %}">
+    <input type="text" name="model_name" placeholder="Enter model name" value="{{ query }}" required>
     <button type="submit">Search</button>
 </form>
 <div class="heading">

@@ -1,11 +1,8 @@
-{% for laptop in laptops %}
-<tr>
-    <td>{{ laptop.brand }}</td>
-    <td>{{ laptop.model_name }}</td>
-    <td>{{ laptop.processor }}</td>
-    <td>${{ laptop.price }}</td>
-    <td>{{ laptop.graphics_card }}</td>
-    <td>{{ laptop.laptop_type }}</td>
-    <td><img src="{{ laptop.image_url }}" alt="{{ laptop.model_name }}" width="100"></td>
-</tr>
-{% endfor %}
+<h1>Searched Laptop</h1>
+<ul>
+    {% for laptop in recommendations %}
+      <li>{{ laptop.name }} - {{ laptop.company }} - {{ laptop.processor }} - ${{ laptop.price }}</li>
+    {% empty %}
+      <li>No recommendations found.</li>
+    {% endfor %}
+  </ul>

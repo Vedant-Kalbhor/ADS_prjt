@@ -64,7 +64,7 @@ class AVLTree:
         y.height = 1 + max(self.get_height(y.left), self.get_height(y.right))
         return y
 
-    def search_by_price(self, root, min_price, max_price, result=[]):
+    def search_by_price(self, root, min_price = 0, max_price = 2000, result=[]):
         if not root:
             return result
 
@@ -81,7 +81,7 @@ class AVLTree:
         return result
 
 # Utility function to search products with price range
-def search_products_by_price(root, min_price, max_price):
+def search_products_by_price(root, min_price = 0, max_price = 2000):
     avl_tree = AVLTree()
     return avl_tree.search_by_price(root, min_price, max_price)
 
@@ -137,7 +137,7 @@ class Graph:
         """Find laptops most similar to the given one using BFS and maximum edge weight."""
         if laptop not in self.graph:
             return []
-
+        
         visited = set()
         queue = [(laptop, 0)]  # Queue stores (laptop, edge_weight)
         similar_laptops = []
