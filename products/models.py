@@ -7,6 +7,8 @@ from django.dispatch import receiver
 class Laptop(models.Model):
     brand = models.CharField(max_length=255)
     model_name = models.CharField(max_length=255)
+    ram = models.IntegerField(default=8)
+    display = models.DecimalField(max_digits=10, decimal_places=2 , default=15.6)
     processor = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     graphics_card = models.CharField(max_length=255)

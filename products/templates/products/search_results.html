@@ -1,8 +1,34 @@
-<h1>Searched Laptop</h1>
-<ul>
-    {% for laptop in recommendations %}
-      <li>{{ laptop.name }} - {{ laptop.company }} - {{ laptop.processor }} - ${{ laptop.price }}</li>
-    {% empty %}
-      <li>No recommendations found.</li>
-    {% endfor %}
-  </ul>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        
+        {% if products %}
+            <div class="laptop-list">
+                {% for laptop in products %}
+                <div class="laptop-item">
+                    <h2>{{ laptop.name }}</h2>
+                    <p><strong>Processor:</strong> {{ laptop.processor }}</p>
+                    <p><strong>Graphics Card:</strong> {{ laptop.graphics_card }}</p>
+                    <p><strong>Company:</strong> {{ laptop.company }}</p>
+                    <p><strong>Display Size:</strong> {{ laptop.display_size }} inches</p>
+                    <p><strong>Price:</strong> ${{ laptop.price }}</p>
+                    <a href="{% url 'laptop_details' laptop.id %}" class="details-link">View Details</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No laptops match your filters. Please try different criteria.</p>
+        {% endif %}
+        
+        <a href="{% url 'ecommerce_website' %}" class="back-link">Go Back to Search</a>
+    </div>
+</body>
+</html>
