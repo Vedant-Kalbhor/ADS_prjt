@@ -1,4 +1,8 @@
 from django.db import models
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+
+
 
 class Laptop(models.Model):
     brand = models.CharField(max_length=255)
@@ -8,6 +12,13 @@ class Laptop(models.Model):
     graphics_card = models.CharField(max_length=255)
     laptop_type = models.CharField(max_length=255, choices=[('Professional', 'Professional'), ('Gaming', 'Gaming'), ('Daily Use', 'Daily Use')])
     image_url = models.URLField(max_length=500)
+    rating = models.IntegerField(default=4)
+    ram=models.IntegerField(default=8,help_text='RAM size in GB')
+    display_size = models.DecimalField(
+        max_digits=4, decimal_places=1, default=15.6, 
+        help_text='Display size in inches'
+    )
+
 
     def __str__(self):
         return f"{self.brand} {self.model_name}"
@@ -15,3 +26,12 @@ class Laptop(models.Model):
     # For the graph structure: fetch related laptops by brand or type
     def get_related_laptops(self):
         return Laptop.objects.filter(brand=self.brand, laptop_type=self.laptop_type).exclude(id=self.id)
+
+
+
+@receiver(post_save, sender=Laptop)
+@receiver(post_delete, sender=Laptop)
+def rebuild_avl_tree(sender, instance, **kwargs):
+
+    from .views import update_tree_cache
+    update_tree_cache()

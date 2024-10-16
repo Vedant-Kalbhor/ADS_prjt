@@ -27,7 +27,7 @@ urlpatterns = [
     path('gaming-laptops/', views.gaming_laptops, name='gaming_laptops'),
     path('study-laptops/', views.study_laptops, name='study_laptops'),
     path('office-laptops/', views.office_laptops, name='office_laptops'),
-    path('search/', views.search_laptops, name='search_laptops'),
+    path('search/', views.search_laptops_by_model, name='search_laptops_by_model'),
     path('laptop/<int:laptop_id>/', views.laptop_details, name='laptop_details'),
     path('address/',views.address,name='address'),
     path('payment/',views.payment,name='payment')
@@ -37,4 +37,3 @@ urlpatterns = [
 
 
 ]
-

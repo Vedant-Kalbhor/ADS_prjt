@@ -789,14 +789,10 @@ flex-wrap: nowrap;
 <li><a href="#" class="under">ABOUT US</a></li>
 </ul>
 </div>
-{% comment %} <div class="search">
 
-<a href=""><input type="text" placeholder="search products" id="input">
-<ion-icon class="s" name="search"></ion-icon>
-</a>
-</div> {% endcomment %}
-<form action="{% url 'search_laptops' %}" method="GET">
-    <input type="text" name="query" placeholder="Search for laptops by name...">
+
+<form method="GET" action="{% url 'search_laptops_by_model' %}">
+    <input type="text" name="model_name" placeholder="Enter model name" value="{{ query }}" required>
     <button type="submit">Search</button>
 </form>
 <div class="heading">
@@ -816,11 +812,11 @@ flex-wrap: nowrap;
 <div class="section">
 <div class="section1">
 <div class="img-slider">
-<img src="https://img.freepik.com/premium-photo/businessman-working-with-laptop-computer-late-night_35674-8281.jpg?w=996" alt="" class="img">
-<img src="https://img.freepik.com/free-photo/businesswoman-holding-cup-coffee-analyzing-financial-graphs-typing-marketing-strategy-while-working-company-project-startup-office-executive-manager-researching-business-solution_482257-34880.jpg?t=st=1726754287~exp=1726757887~hmac=753dc74581f6e451e8aae643313162090f2573f1d5cded3edf31ffe872d52363&w=996" alt="" class="img">
+<img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="img">
+<img src="https://images.pexels.com/photos/4974915/pexels-photo-4974915.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="img">
 <img src="https://img.freepik.com/free-photo/view-office-desk-with-messy-workspace-laptop_23-2150282087.jpg?t=st=1726754324~exp=1726757924~hmac=c53615a08c97c25a5a5d4d0cb6512ca797cf0742aa0b26dc384d2df66e2a36fe&w=996" alt="" class="img">
 <img src="https://img.freepik.com/free-photo/young-businesswoman-drinking-coffee-with-her-eyes-closed-while-taking-break-from-work-office_637285-5178.jpg?uid=R164202707&ga=GA1.1.403187138.1726754182" alt="" class="img">
-<img src="https://img.freepik.com/free-photo/online-trends_53876-167072.jpg?uid=R164202707&ga=GA1.1.403187138.1726754182" alt="" class="img">
+<img src="https://images.pexels.com/photos/8791330/pexels-photo-8791330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img">
 </div>
 
 </div>
@@ -967,8 +963,6 @@ flex-wrap: nowrap;
         <div class="item" style="background-image: url(https://wallpapercave.com/wp/C8dzY9z.jpg);">
             <div class="content">
                 <div class="name">ACER</div>
-                {% comment %} <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                <button>See More</button> {% endcomment %}
             </div>
         </div>
 
@@ -1008,38 +1002,6 @@ Connect with us at<div class="social-media">
 <ion-icon name="logo-twitter"></ion-icon>
 </a>
 </div>
-<!-- </div>
-<div class="footer2">
-<div class="product">
-<div class="heading">Products</div>
-<div class="div">Sell your Products</div>
-<div class="div">Advertise</div>
-<div class="div">Pricing</div>
-<div class="div">Product Buisness</div>
-
-</div>
-<div class="services">
-<div class="heading">Services</div>
-<div class="div">Return</div>
-<div class="div">Cash Back</div>
-<div class="div">Affiliate Marketing</div>
-<div class="div">Others</div>
-</div>
-<div class="Company">
-<div class="heading">Company</div>
-<div class="div">Complaint</div>
-<div class="div">Careers</div>
-<div class="div">Affiliate Marketing</div>
-<div class="div">Support</div>
-</div>
-<div class="Get Help">
-<div class="heading">Get Help</div>
-<div class="div">Help Center</div>
-<div class="div">Privacy Policy</div>
-<div class="div">Terms</div>
-<div class="div">Login</div>
-</div>
-</div> -->
 <div class="footer3">Copyright © <h4>ShoPperZ</h4> 2021-2028</div>
 </footer>
 <script src="ecommerce_website.js"></script>
