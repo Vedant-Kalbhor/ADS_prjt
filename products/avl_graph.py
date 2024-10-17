@@ -90,19 +90,6 @@ def search_products_by_price(root, min_price = 0, max_price = 2000):
     avl_tree = AVLTree()
     return avl_tree.search_by_price(root, min_price, max_price)
 
-# class LaptopGraph:
-#     def __init__(self):
-#         # A dictionary where each brand/type points to a list of laptops (nodes)
-#         self.graph = defaultdict(list)
-
-#     def add_laptop(self, laptop):
-#         # Add a laptop to the graph based on its brand and type
-#         self.graph[(laptop.brand, laptop.laptop_type)].append(laptop)
-
-#     def get_related_laptops(self, laptop):
-#         # Get all laptops that are related by brand and type
-#         return self.graph.get((laptop.brand, laptop.laptop_type), [])
-
 class Graph:
     def __init__(self):
         self.graph = {}
@@ -132,7 +119,7 @@ class Graph:
                         weight += 1
                     if laptop1.display == laptop2.display:
                         weight += 1
-                    if abs(laptop1.price - laptop2.price) <= 1000:  # Allow slight price variation
+                    if abs(laptop1.price - laptop2.price) <= 100:  # Allow slight price variation
                         weight += 1
 
                     if weight > 0:
@@ -154,9 +141,12 @@ class Graph:
             for neighbor, weight in self.graph[current_laptop].items():
                 if neighbor not in visited and neighbor.brand != company:
                     if weight >= current_weight:  # Only follow the edges with maximum similarity
-                        similar_laptops.append(neighbor)
+                        similar_laptops.append((neighbor, weight))
                         queue.append((neighbor, weight))
                         visited.add(neighbor)
 
-        similar_laptops = similar_laptops[:6]
-        return similar_laptops
+        # Sort similar laptops by edge weight (similarity) in descending order
+        similar_laptops.sort(key=lambda x: x[1], reverse=True)
+        
+        # Return only the top 6 similar laptops
+        return [laptop for laptop, weight in similar_laptops[:6]]

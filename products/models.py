@@ -25,7 +25,7 @@ class Laptop(models.Model):
         return Laptop.objects.filter(brand=self.brand, laptop_type=self.laptop_type).exclude(id=self.id)
 
 
-
+#tree gets updated whenever new Laptop gets added
 @receiver(post_save, sender=Laptop)
 @receiver(post_delete, sender=Laptop)
 def rebuild_avl_tree(sender, instance, **kwargs):

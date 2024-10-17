@@ -752,6 +752,48 @@ display: flex;
 flex-wrap: nowrap;
 }
 }
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+.search-input {
+    width: 300px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5); /* Green glow */
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    outline: none;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+
+.search-button:active {
+    transform: scale(0.95); 
+}
+
 
 </style>
 
@@ -775,7 +817,7 @@ flex-wrap: nowrap;
 
 <body>
 <header>
-<div class="logo"><a href="#">LaptopLoom</a></div>
+<div class="logo"><a href="#">Laptop Website</a></div>
 <div class="menu">
 <a href="#">
 <ion-icon name="close" class="close"></ion-icon>
@@ -792,8 +834,8 @@ flex-wrap: nowrap;
 
 
 <form method="GET" action="{% url 'search_laptops_by_model' %}">
-    <input type="text" name="model_name" placeholder="Enter model name" value="{{ query }}" required>
-    <button type="submit">Search</button>
+    <input type="text" name="model_name" placeholder="Enter model name" value="{{ query }}" required class="search-input">
+    <button type="submit" class="search-button">Search</button>
 </form>
 <div class="heading">
 <ul>
@@ -982,7 +1024,7 @@ flex-wrap: nowrap;
 
 <footer>
 <div id="footer" class="footer0">
-<h1>WELCOME TO LAPTOPLOOM</h1>
+<h1>WELCOME TO Laptop Website</h1>
 </div>
 <div class="footer1 ">
 Connect with us at<div class="social-media">

@@ -225,23 +225,7 @@
         </tbody>
     </table>
 
-    <script>
-        document.getElementById('sort-options').addEventListener('change', function() {
-            const sortOption = this.value;
-            const laptops = Array.from(document.querySelectorAll('#laptop-table th'));
-
-            laptops.sort((a, b) => {
-                if (sortOption === 'price') {
-                    return a.getAttribute('data-price') - b.getAttribute('data-price');
-                } else if (sortOption === 'rating') {
-                    return b.getAttribute('data-rating') - a.getAttribute('data-rating');
-                }
-            });
-
-            const tbody = document.querySelector('#laptop-table tbody');
-            laptops.forEach(laptop => tbody.appendChild(laptop.parentElement));
-        });
-    </script>
+    
 
 </body>
 </html>

@@ -11,9 +11,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User  # Assuming you placed the classes in avl_graph.py
 import decimal
 
-#fyddydyduyd
-# This is a comment 
-
 
 def login_page(request):
      if request.method == 'POST':
@@ -105,13 +102,6 @@ def  payment(request):
 
 
 
-# from django.shortcuts import render, get_object_or_404
-# from .models import Laptop
-
-# def search_laptops(request):
-#     query = request.GET.get('query', '')  # Get the search query
-#     laptops = Laptop.objects.filter(model_name__icontains=query) if query else Laptop.objects.all()
-#     return render(request, 'products/search_results.html', {'laptops': laptops})
 def build_avl_tree():
     avl_tree = AVLTree()
     root = None
@@ -124,7 +114,7 @@ def update_tree_cache():
     root = build_avl_tree()
     cache.set('avl_tree', root, timeout=None)  # Cache indefinitely
 
-def search_laptops(request):
+def search_laptops(request):#FILTER SEARCH
         filters = {
         'processors': request.GET.getlist('processor'),
         'graphics_cards': request.GET.getlist('graphics_card'),
@@ -141,8 +131,8 @@ def search_laptops(request):
             cache.set('avl_tree', root, timeout=None)
 
     # Step 1: Search by price range using the AVL tree
-        min_price = float(request.GET.get('price_min', 0))  # Removed comma
-        max_price = float(request.GET.get('price_max', float('inf')))  # Removed comma
+        min_price = float(request.GET.get('price_min', 0)) 
+        max_price = float(request.GET.get('price_max', float('inf')))  
     
         products_in_price_range = search_products_by_price(root, min_price, max_price)
 
