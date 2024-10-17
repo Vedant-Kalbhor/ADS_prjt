@@ -1,14 +1,15 @@
 from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
 from .models import Laptop
-# from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
+
+
 from django.core.cache import cache
 from .models import Laptop
 from .avl_graph import AVLTree, search_products_by_price , Graph 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.contrib.auth.models import User  # Assuming you placed the classes in avl_graph.py
+from django.contrib.auth.models import User  
 import decimal
 
 
@@ -168,9 +169,6 @@ def laptop_details(request, laptop_id):
                                                      'recommendations': recommendations})
 
 
-# from django.shortcuts import render
-# from .models import Laptop
-# from .avl_graph import LaptopAVL, LaptopGraph  # Assuming you placed the classes in avl_graph.py
 
 
 def build_laptop_graph():

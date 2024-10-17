@@ -35,8 +35,4 @@ urlpatterns = [
     path('address/',views.address,name='address'),
     path('payment/',views.payment,name='payment')
 
-
-
-
-
 ]
