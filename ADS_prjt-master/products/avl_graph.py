@@ -1,3 +1,4 @@
+import decimal
 class AVLNode:
     def __init__(self, product):
         self.product = product
@@ -64,24 +65,28 @@ class AVLTree:
         y.height = 1 + max(self.get_height(y.left), self.get_height(y.right))
         return y
 
-    def search_by_price(self, root, min_price, max_price, result=[]):
+    def search_by_price(self, root, min_price=0, max_price=2000, result=[]):
         if not root:
             return result
 
-        # In-order traversal to get products in the price range
+    # Convert prices to decimal for comparison
+        min_price = decimal.Decimal(min_price)
+        max_price = decimal.Decimal(max_price)
+
+    # In-order traversal to get products in the price range
         if root.product.price >= min_price:
             self.search_by_price(root.left, min_price, max_price, result)
-        
+    
         if min_price <= root.product.price <= max_price:
             result.append(root.product)
-        
+    
         if root.product.price <= max_price:
             self.search_by_price(root.right, min_price, max_price, result)
 
         return result
 
 # Utility function to search products with price range
-def search_products_by_price(root, min_price, max_price):
+def search_products_by_price(root, min_price = 0, max_price = 2000):
     avl_tree = AVLTree()
     return avl_tree.search_by_price(root, min_price, max_price)
 
@@ -125,7 +130,7 @@ class Graph:
                         weight += 1
                     if laptop1.graphics_card == laptop2.graphics_card:
                         weight += 1
-                    if laptop1.display_size == laptop2.display_size:
+                    if laptop1.display == laptop2.display:
                         weight += 1
                     if abs(laptop1.price - laptop2.price) <= 1000:  # Allow slight price variation
                         weight += 1
@@ -137,7 +142,7 @@ class Graph:
         """Find laptops most similar to the given one using BFS and maximum edge weight."""
         if laptop not in self.graph:
             return []
-
+        
         visited = set()
         queue = [(laptop, 0)]  # Queue stores (laptop, edge_weight)
         similar_laptops = []
@@ -147,11 +152,12 @@ class Graph:
             visited.add(current_laptop)
 
             for neighbor, weight in self.graph[current_laptop].items():
-                if neighbor not in visited and neighbor.company != company:
+                if neighbor not in visited and neighbor.brand != company:
                     if weight >= current_weight:  # Only follow the edges with maximum similarity
                         similar_laptops.append(neighbor)
                         queue.append((neighbor, weight))
                         visited.add(neighbor)
 
+        similar_laptops = similar_laptops[:6]
         return similar_laptops
 

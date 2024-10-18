@@ -196,37 +196,20 @@
     </table>
 
     <!-- Recommended Laptops Section -->
-    <div class="related-laptops">
-        <h2>Recommended Laptops</h2>
+<div class="related-laptops">
+    <h2>Recommended Laptops</h2>
 
-        <!-- Laptop 1 -->
-        <div class="laptop-item">
-            <img src="recommended_laptop_1.jpg" alt="Laptop 1">
-            <b>Laptop Brand 1</b>
-            <strong>$999</strong>
-        </div>
-
-        <!-- Laptop 2 -->
-        <div class="laptop-item">
-            <img src="recommended_laptop_2.jpg" alt="Laptop 2">
-            <b>Laptop Brand 2</b>
-            <strong>$899</strong>
-        </div>
-
-        <!-- Laptop 3 -->
-        <div class="laptop-item">
-            <img src="recommended_laptop_3.jpg" alt="Laptop 3">
-            <b>Laptop Brand 3</b>
-            <strong>$799</strong>
-        </div>
-
-        <!-- Laptop 4 -->
-        <div class="laptop-item">
-            <img src="recommended_laptop_4.jpg" alt="Laptop 4">
-            <b>Laptop Brand 4</b>
-            <strong>$1199</strong>
-        </div>
+    {% for laptop in recommendations %}
+    <div class="laptop-item">
+        <a href="{% url 'laptop_details' laptop.id %}">  <!-- Adjust 'laptop_detail' to match your URL name -->
+            <img src="{{ laptop.image_url }}" alt="{{ laptop.brand }}">
+            <b>{{ laptop.brand }}</b>
+            <strong>${{ laptop.price }}</strong>
+        </a>
     </div>
+    {% endfor %}
+</div>
+
 
 </body>
 </html>

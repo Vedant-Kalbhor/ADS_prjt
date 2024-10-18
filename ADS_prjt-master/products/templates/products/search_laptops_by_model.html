@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Laptop</title>
+
+    <style>
+        /* Basic Reset and Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Background and body styling */
+        body {
+            background: linear-gradient(to bottom right, #e3f2fd, #ffffff); /* Light gradient */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Centering the content */
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #1976d2; /* Blue accent */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #777;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        ul {
+            list-style-type: none;
+            margin-top: 15px;
+            text-align: left;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 18px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #1976d2;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1565c0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            ul li {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search for a Laptop by Model Name</h1>
+
+        {% if laptop %}
+            <h2>Details for {{ laptop.model_name }}</h2>
+            <img src="{{ laptop.image_url }}" alt="{{ laptop.model_name }}">
+            <ul>
+                <li><strong>Brand:</strong> {{ laptop.brand }}</li>
+                <li><strong>Processor:</strong> {{ laptop.processor }}</li>
+                <li><strong>RAM:</strong> {{ laptop.ram }} GB</li>
+                <li><strong>Graphics Card:</strong> {{ laptop.graphics_card }}</li>
+                <li><strong>Display Size:</strong> {{ laptop.display }} inches</li>
+                <li><strong>Price:</strong> ${{ laptop.price }}</li>
+            </ul>
+            <a href="/ecommerce_website" class="btn">Back to Home</a>
+        {% else %}
+            {% if query %}
+                <p>No laptop found with the model name "{{ query }}"</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
